@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Name — QA Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161d;
+    --bg3: #1a1e28;
+    --border: rgba(255,255,255,0.08);
+    --border-accent: rgba(100,220,160,0.3);
+    --text: #e8eaf0;
+    --text-muted: #7a8099;
+    --text-dim: #4a5068;
+    --green: #64dca0;
+    --green-dim: rgba(100,220,160,0.12);
+    --green-glow: rgba(100,220,160,0.06);
+    --amber: #f0b429;
+    --red: #f06080;
+    --blue: #60a8f0;
+    --mono: 'DM Mono', monospace;
+    --sans: 'Sora', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(13,15,20,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--green);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+
+  /* ── LAYOUT ── */
+  section { padding: 6rem 2.5rem; max-width: 900px; margin: 0 auto; }
+  .full-width { max-width: 100%; padding: 6rem 2.5rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 7rem;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(100,220,160,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--green);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--green);
+  }
+  h1 {
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  h1 .accent { color: var(--green); }
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1.75rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary {
+    background: var(--green);
+    color: #0d0f14;
+    border: 1px solid var(--green);
+  }
+  .btn-primary:hover { background: transparent; color: var(--green); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+  .hero-stats {
+    margin-top: 4rem;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--green);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--green);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--green);
+  }
+  h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  /* ── ABOUT ── */
+  #about { border-top: 1px solid var(--border); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 1rem;
+    font-size: 0.97rem;
+  }
+  .about-text p strong { color: var(--text); font-weight: 600; }
+  .skills-col {}
+  .skills-group { margin-bottom: 1.5rem; }
+  .skills-group-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 3px;
+    border: 1px solid;
+    letter-spacing: 0.04em;
+  }
+  .tag-green { border-color: rgba(100,220,160,0.3); color: var(--green); background: var(--green-dim); }
+  .tag-amber { border-color: rgba(240,180,41,0.3); color: var(--amber); background: rgba(240,180,41,0.08); }
+  .tag-blue  { border-color: rgba(96,168,240,0.3); color: var(--blue); background: rgba(96,168,240,0.08); }
+  .tag-gray  { border-color: var(--border); color: var(--text-muted); background: transparent; }
+
+  /* ── PROJECTS ── */
+  #projects { border-top: 1px solid var(--border); }
+
+  .project-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    background: var(--bg2);
+    transition: border-color 0.3s;
+  }
+  .project-card:hover { border-color: var(--border-accent); }
+
+  .project-header {
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .project-meta {}
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+  }
+  .project-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+  }
+  .project-context { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; }
+  .project-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: flex-start; }
+
+  .project-body { padding: 2rem; }
+
+  .project-section { margin-bottom: 2rem; }
+  .project-section-title {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .project-section p { font-size: 0.92rem; color: var(--text-muted); font-weight: 300; }
+
+  .test-cases-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+  .test-cases-table th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .test-cases-table td {
+    padding: 0.65rem 0.75rem;
+    vertical-align: top;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    font-weight: 300;
+    font-size: 0.82rem;
+  }
+  .test-cases-table tr:last-child td { border-bottom: none; }
+  .test-cases-table td:first-child {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .status-pass {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--green);
+    background: var(--green-dim);
+    border: 1px solid rgba(100,220,160,0.2);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+  }
+  .status-fail {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--red);
+    background: rgba(240,96,128,0.08);
+    border: 1px solid rgba(240,96,128,0.2);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  .bugs-list { list-style: none; }
+  .bugs-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--text-muted);
+  }
+  .bugs-list li:last-child { border-bottom: none; }
+  .bug-sev {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .sev-high { color: var(--red); background: rgba(240,96,128,0.08); border: 1px solid rgba(240,96,128,0.2); }
+  .sev-med  { color: var(--amber); background: rgba(240,180,41,0.08); border: 1px solid rgba(240,180,41,0.2); }
+  .sev-low  { color: var(--blue); background: rgba(96,168,240,0.08); border: 1px solid rgba(96,168,240,0.2); }
+
+  .conclusion-box {
+    background: var(--green-glow);
+    border: 1px solid rgba(100,220,160,0.15);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+  }
+  .conclusion-box p { font-size: 0.9rem; color: var(--text-muted); font-weight: 300; }
+  .conclusion-box strong { color: var(--green); font-weight: 600; }
+
+  .tools-used { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  /* ── VISUAL NOTES ── */
+  .visual-note {
+    background: var(--bg3);
+    border: 1px dashed rgba(240,180,41,0.3);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    margin-top: 1rem;
+  }
+  .visual-note-icon {
+    font-family: var(--mono);
+    color: var(--amber);
+    font-size: 0.72rem;
+    white-space: nowrap;
+    margin-top: 0.1rem;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  #contact h2 { margin-bottom: 0.75rem; }
+  #contact .sub {
+    color: var(--text-muted);
+    font-weight: 300;
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: all 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .contact-link:hover { border-color: var(--green); color: var(--green); }
+  .contact-link-icon { font-size: 1rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 2.5rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+    section { padding: 4rem 1.25rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-stats { gap: 2rem; }
+    .project-header { flex-direction: column; }
+    .test-cases-table { font-size: 0.75rem; }
+    .test-cases-table th, .test-cases-table td { padding: 0.5rem 0.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════
+     NAV
+════════════════════════════ -->
+<nav>
+  <span class="nav-logo">// your-name.qa</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<section id="hero">
+  <div class="hero-eyebrow">QA Engineer</div>
+
+  <h1>
+    Breaking software<br />
+    <span class="accent">before users do.</span>
+  </h1>
+
+  <p class="hero-desc">
+    Biomedical engineer turned QA specialist. I design test strategies,
+    validate complex systems, and build the safety nets that keep products
+    from shipping broken.
+  </p>
+
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View Projects</a>
+    <a href="#contact" class="btn btn-ghost">Contact Me</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">2+</span>
+      <span class="stat-label">Projects Tested</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">50+</span>
+      <span class="stat-label">Test Cases Written</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">15+</span>
+      <span class="stat-label">Bugs Documented</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Testing Domains</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     ABOUT
+════════════════════════════ -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2>Precision from a different field.</h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        My background is in <strong>biomedical engineering</strong> — a field where
+        a missed requirement or an untested edge case has real consequences.
+        That mindset translates directly to QA: I approach software testing
+        with methodical rigor, not just checklist compliance.
+      </p>
+      <p>
+        I currently focus on <strong>functional testing, API validation, and
+        frontend-backend integration</strong>. I design test cases from first
+        principles — positive paths, negative scenarios, and boundary
+        conditions — and document findings in a way developers can act on
+        immediately.
+      </p>
+      <p>
+        I'm building hands-on experience through structured bootcamp
+        projects and real-application simulations, and actively expanding
+        into <strong>test automation with Selenium</strong>.
+      </p>
+    </div>
+
+    <div class="skills-col">
+      <div class="skills-group">
+        <div class="skills-group-label">Testing</div>
+        <div class="skill-tags">
+          <span class="tag tag-green">Functional Testing</span>
+          <span class="tag tag-green">API Testing</span>
+          <span class="tag tag-green">Edge Case Analysis</span>
+          <span class="tag tag-green">Regression Testing</span>
+          <span class="tag tag-green">Exploratory Testing</span>
+          <span class="tag tag-green">Frontend-Backend Validation</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-group-label">Tools</div>
+        <div class="skill-tags">
+          <span class="tag tag-amber">Postman</span>
+          <span class="tag tag-amber">Selenium</span>
+          <span class="tag tag-amber">Jira</span>
+          <span class="tag tag-amber">TestRail</span>
+          <span class="tag tag-amber">Chrome DevTools</span>
+          <span class="tag tag-amber">Git</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-group-label">Languages & Formats</div>
+        <div class="skill-tags">
+          <span class="tag tag-blue">Python (basic)</span>
+          <span class="tag tag-blue">JSON</span>
+          <span class="tag tag-blue">HTML/CSS</span>
+          <span class="tag tag-blue">SQL (basic)</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-group-label">Methods</div>
+        <div class="skill-tags">
+          <span class="tag tag-gray">Test Case Design</span>
+          <span class="tag tag-gray">Bug Reporting</span>
+          <span class="tag tag-gray">Test Planning</span>
+          <span class="tag tag-gray">Agile / Scrum</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     PROJECTS
+════════════════════════════ -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2>What I've actually tested.</h2>
+
+
+  <!-- ── PROJECT 1 ── -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-meta">
+        <div class="project-num">// PROJECT 01</div>
+        <div class="project-title">E-Commerce Checkout Flow</div>
+        <div class="project-context">Simulated retail web app — end-to-end purchase validation</div>
+      </div>
+      <div class="project-badges">
+        <span class="tag tag-green">Functional</span>
+        <span class="tag tag-amber">UI Validation</span>
+        <span class="tag tag-blue">Edge Cases</span>
+        <span class="tag tag-gray">Manual</span>
+      </div>
+    </div>
+
+    <div class="project-body">
+
+      <div class="project-section">
+        <div class="project-section-title">Objective &amp; Scope</div>
+        <p>
+          Validate the complete checkout flow of a simulated e-commerce platform —
+          from adding items to cart through payment confirmation — covering happy
+          paths, error states, field validation, and boundary conditions.
+          Out of scope: payment gateway internals, mobile native app.
+        </p>
+      </div>
+
+      <div class="project-section">
+        <div class="project-section-title">Test Cases (representative sample)</div>
+        <table class="test-cases-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TC-001</td>
+              <td>Add single in-stock item to cart and complete purchase with valid credit card</td>
+              <td>Positive</td>
+              <td><span class="status-pass">PASS</span></td>
+            </tr>
+            <tr>
+              <td>TC-002</td>
+              <td>Apply valid 20% discount coupon before checkout — verify price calculation</td>
+              <td>Positive</td>
+              <td><span class="status-pass">PASS</span></td>
+            </tr>
+            <tr>
+              <td>TC-003</td>
+              <td>Attempt checkout with expired credit card (MM/YY in the past)</td>
+              <td>Negative</td>
+              <td><span class="status-pass">PASS</span></td>
+            </tr>
+            <tr>
+              <td>TC-004</td>
+              <td>Submit empty required shipping fields — verify inline error messages</td>
+              <td>Negative</td>
+              <td><span class="status-fail">FAIL</span></td>
+            </tr>
+            <tr>
+              <td>TC-005</td>
+              <td>Add quantity 0 or negative value via manual URL parameter manipulation</td>
+              <td>Edge Case</td>
+              <td><span class="status-fail">FAIL</span></td>
+            </tr>
+            <tr>
+              <td>TC-006</td>
+              <td>Apply two discount coupons simultaneously — verify only one is applied</td>
+              <td>Edge Case</td>
+              <td><span class="status-fail">FAIL</span></td>
+            </tr>
+            <tr>
+              <td>TC-007</td>
+              <td>Complete purchase with minimum cart total (1 item, $0.01)</td>
+              <td>Boundary</td>
+              <td><span class="status-pass">PASS</span></td>
+            </tr>
+            <tr>
+              <td>TC-008</td>
+              <td>Attempt purchase of out-of-stock item that went out of stock mid-session</td>
+              <td>Edge Case</td>
+              <td><span class="status-fail">FAIL</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="visual-note">
+          <span class="visual-note-icon">// visual</span>
+          <span>Add screenshot of TC-004 showing missing error state, and a screen recording GIF of TC-006 demonstrating the double-coupon bug. Place below this table.</span>
+        </div>
+      </div>
+
+      <div class="project-section">
+        <div class="project-section-title">Bugs Found</div>
+        <ul class="bugs-list">
+          <li>
+            <span class="bug-sev sev-high">HIGH</span>
+            <span><strong style="color: var(--text); font-weight:500;">Dual coupon stacking:</strong> Applying two promo codes in sequence results in both being applied, allowing orders at negative total. No server-side coupon uniqueness check. Reproducible 100%.</span>
+          </li>
+          <li>
+            <span class="bug-sev sev-high">HIGH</span>
+            <span><strong style="color: var(--text); font-weight:500;">Negative quantity via URL:</strong> Manually setting <code style="font-family:var(--mono);font-size:0.8em;color:var(--green);">?qty=-3</code> adds negative quantities to cart and reduces total price. No server-side quantity validation.</span>
+          </li>
+          <li>
+            <span class="bug-sev sev-med">MED</span>
+            <span><strong style="color: var(--text); font-weight:500;">Missing field error messages:</strong> Submitting checkout with empty "Shipping Address" fields shows no inline validation — form silently fails with no user feedback.</span>
+          </li>
+          <li>
+            <span class="bug-sev sev-med">MED</span>
+            <span><strong style="color: var(--text); font-weight:500;">Stale stock state:</strong> Item added to cart while in stock can still complete purchase after going out-of-stock mid-session. No real-time stock revalidation at checkout.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="project-section">
+        <div class="project-section-title">Tools Used</div>
+        <div class="tools-used">
+          <span class="tag tag-amber">Chrome DevTools</span>
+          <span class="tag tag-amber">Google Sheets (test tracking)</span>
+          <span class="tag tag-amber">Jira (bug reports)</span>
+          <span class="tag tag-gray">Manual Testing</span>
+          <span class="tag tag-gray">Loom (recording)</span>
+        </div>
+      </div>
+
+      <div class="project-section">
+        <div class="project-section-title">Value Delivered</div>
+        <div class="conclusion-box">
+          <p>
+            Identified <strong>2 high-severity business logic flaws</strong> (coupon stacking, negative quantity)
+            that could directly result in financial loss if deployed. Documented all 4 bugs with steps to reproduce,
+            expected vs actual results, and severity justification — ready for developer handoff.
+            Test coverage: 8 cases across positive, negative, edge, and boundary categories.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- /PROJECT 1 -->
+
+
+  <!-- ── PROJECT 2 ── -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-meta">
+        <div class="project-num">// PROJECT 02</div>
+        <div class="project-title">REST API — User Auth &amp; Task Management</div>
+        <div class="project-context">Simulated task management backend — Postman API validation</div>
+      </div>
+      <div class="project-badges">
+        <span class="tag tag-green">API Testing</span>
+        <span class="tag tag-amber">Auth Validation</span>
+        <span class="tag tag-blue">Status Codes</span>
+        <span class="tag tag-gray">Postman</span>
+      </div>
+    </div>
+
+    <div class="project-body">
+
+      <div class="project-section">
+        <div class="project-section-title">Objective &amp; Scope</div>
+        <p>
+          Validate the REST API of a simulated task management application — covering
+          user registration, login/logout, JWT authentication, and full CRUD operations
+          on task resources. Focused on authentication flow integrity, proper HTTP
+          status codes, error handling, and response body structure.
+          Out of scope: performance/load testing, third-party integrations.
+        </p>
+      </div>
+
+      <div class="project-section">
+        <div class="project-section-title">Endpoints Tested</div>
+        <div class="tools-used" style="margin-bottom:0.5rem;">
+          <span class="tag tag-blue">POST /auth/register</span>
+          <span class="tag tag-blue">POST /auth/login</span>
+          <span class="tag tag-blue">GET /tasks</span>
+          <span class="tag tag-blue">POST /tasks</span>
+          <span class="tag tag-blue">PUT /tasks/:id</span>
+          <span class="tag tag-blue">DELETE /tasks/:id</span>
+        </div>
+      </div>
+
+      <div class="project-section">
+        <div class="project-section-title">Test Cases (representative sample)</div>
+        <table class="test-cases-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Expected</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>API-001</td>
+              <td>Register new user with valid email and strong password</td>
+              <td>Positive</td>
+              <td>201 + token</td>
+              <td><span class="status-pass">PASS</span></td>
+            </tr>
+            <tr>
+              <td>API-002</td>
+              <td>Login with valid credentials — verify JWT returned</td>
+              <td>Positive</td>
+              <td>200 + JWT</td>
+              <td><span class="status-pass">PASS</span></td>
+            </tr>
+            <tr>
+              <td>API-003</td>
+              <td>Access GET /tasks without Authorization header</td>
+              <td>Negative</td>
+              <td>401</td>
+              <td><span class="status-pass">PASS</span></td>
+            </tr>
+            <tr>
+              <td>API-004</td>
+              <td>Access GET /tasks with expired JWT</td>
+              <td>Negative</td>
+              <td>401</td>
+              <td><span class="status-fail">FAIL</span></td>
+            </tr>
+            <tr>
+              <td>API-005</td>
+              <td>Register with already-registered email address</td>
+              <td>Negative</td>
+              <td>409 Conflict</td>
+              <td><span class="status-fail">FAIL</span></td>
+            </tr>
+            <tr>
+              <td>API-006</td>
+              <td>Create task with empty "title" field (required)</td>
+              <td>Negative</td>
+              <td>400 + error msg</td>
+              <td><span class="status-pass">PASS</span></td>
+            </tr>
+            <tr>
+              <td>API-007</td>
+              <td>Delete task belonging to a different authenticated user (IDOR check)</td>
+              <td>Security</td>
+              <td>403 Forbidden</td>
+              <td><span class="status-fail">FAIL</span></td>
+            </tr>
+            <tr>
+              <td>API-008</td>
+              <td>Send malformed JSON body to POST /tasks</td>
+              <td>Edge Case</td>
+              <td>400</td>
+              <td><span class="status-pass">PASS</span></td>
+            </tr>
+            <tr>
+              <td>API-009</td>
+              <td>GET /tasks/:id with non-existent task ID</td>
+              <td>Negative</td>
+              <td>404</td>
+              <td><span class="status-pass">PASS</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="visual-note">
+          <span class="visual-note-icon">// visual</span>
+          <span>Add Postman screenshot showing API-007 response (expected 403, received 200). Include the response JSON body. Export and embed the Postman collection link below this table.</span>
+        </div>
+      </div>
+
+      <div class="project-section">
+        <div class="project-section-title">Bugs Found</div>
+        <ul class="bugs-list">
+          <li>
+            <span class="bug-sev sev-high">CRITICAL</span>
+            <span><strong style="color: var(--text); font-weight:500;">IDOR — Broken Object Level Authorization:</strong> Authenticated User B can delete tasks created by User A by knowing the task ID. API returns 200 instead of 403. No ownership validation on DELETE /tasks/:id.</span>
+          </li>
+          <li>
+            <span class="bug-sev sev-high">HIGH</span>
+            <span><strong style="color: var(--text); font-weight:500;">Expired JWT accepted:</strong> Requests with a manually expired JWT (exp set in the past) return 200 and valid data. JWT expiry is not validated server-side.</span>
+          </li>
+          <li>
+            <span class="bug-sev sev-med">MED</span>
+            <span><strong style="color: var(--text); font-weight:500;">Duplicate registration returns 200:</strong> Attempting to register with an already-used email returns 200 OK instead of 409 Conflict. A duplicate user is silently created with a different internal ID.</span>
+          </li>
+          <li>
+            <span class="bug-sev sev-low">LOW</span>
+            <span><strong style="color: var(--text); font-weight:500;">Error response not standardized:</strong> Different endpoints return different error body shapes — some use <code style="font-family:var(--mono);font-size:0.8em;color:var(--green);">{error: "..."}</code>, others use <code style="font-family:var(--mono);font-size:0.8em;color:var(--green);">{message: "..."}</code>. Inconsistent contract for frontend consumers.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="project-section">
+        <div class="project-section-title">Tools Used</div>
+        <div class="tools-used">
+          <span class="tag tag-amber">Postman</span>
+          <span class="tag tag-amber">JWT.io (token inspection)</span>
+          <span class="tag tag-amber">Postman Collections</span>
+          <span class="tag tag-amber">Jira (bug reports)</span>
+          <span class="tag tag-gray">Manual Testing</span>
+        </div>
+      </div>
+
+      <div class="project-section">
+        <div class="project-section-title">Value Delivered</div>
+        <div class="conclusion-box">
+          <p>
+            Caught a <strong>critical IDOR vulnerability</strong> that would expose all users'
+            data to any authenticated attacker — a security finding, not just a functional bug.
+            Identified that <strong>JWT expiry is entirely bypassed</strong>, making session management
+            non-functional. All bugs include HTTP request/response evidence, reproducibility steps,
+            and OWASP reference where applicable.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- /PROJECT 2 -->
+
+</section>
+
+
+<!-- ════════════════════════════
+     CONTACT
+════════════════════════════ -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2>Let's talk.</h2>
+  <p class="sub">Open to QA Engineer roles — junior and mid-level. Available for contract and full-time.</p>
+
+  <div class="contact-links">
+    <a href="mailto:your.email@example.com" class="contact-link">
+      <span class="contact-link-icon">✉</span>
+      your.email@example.com
+    </a>
+    <a href="https://linkedin.com/in/your-profile" target="_blank" class="contact-link">
+      <span class="contact-link-icon">in</span>
+      linkedin.com/in/your-profile
+    </a>
+    <a href="https://github.com/your-github" target="_blank" class="contact-link">
+      <span class="contact-link-icon">⌥</span>
+      github.com/your-github
+    </a>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     FOOTER
+════════════════════════════ -->
+<footer>
+  <span>// Your Name · QA Engineer · 2025</span>
+</footer>
+
+</body>
+</html>
