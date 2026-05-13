@@ -772,7 +772,7 @@
      NAV
 ════════════════════════════ -->
 <nav>
-  <span class="nav-logo">// Carlo Ramírez.qa</span>
+  <span class="nav-logo">// Ing Carlo Iván Ramírez Álvarez -- QA</span>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -969,7 +969,7 @@
               </div>
               <div class="notion-prop">
                 <span class="notion-prop-key">Type</span>
-                <span class="notion-prop-val">Simulated — Bootcamp project</span>
+                <span class="notion-prop-val">Simulated — Bootcamp Project</span>
               </div>
               <div class="notion-prop">
                 <span class="notion-prop-key">Technologies</span>
@@ -980,7 +980,8 @@
                   <span class="pill pill-amber">Jira</span>
                   <span class="pill pill-amber">Google Sheets</span>
                   <span class="pill pill-gray">Manual Testing</span>
-                  <span class="pill pill-gray">Loom</span>
+                  <span class="pill pill-gray">UI Testing</span>
+                  <span class="pill pill-gray">Loom</span>                
                 </span>
               </div>
               <div class="notion-prop">
@@ -997,10 +998,10 @@
             <div class="notion-block">
               <div class="notion-block-label">Objective &amp; Scope</div>
               <p>
-                Validate the complete checkout flow of a simulated e-commerce platform —
-                from adding items to cart through payment confirmation — covering happy
-                paths, error states, field validation, and boundary conditions.
-                Out of scope: payment gateway internals, mobile native app.
+                Validate the functionality and usability of the Urban Routes frontend —
+                covering core user flows, input validation, UI behavior, and error states.
+                Includes happy paths, negative scenarios, and edge cases.
+                Out of scope: backend logic, API integrations.
               </p>
             </div>
 
@@ -1008,10 +1009,11 @@
             <div class="notion-block">
               <div class="notion-block-label">Responsibilities</div>
               <ul class="notion-bullets">
-                <li>Designed test cases from scratch covering positive, negative, edge, and boundary scenarios</li>
-                <li>Identified two HIGH-severity business logic flaws with financial impact (coupon stacking, negative quantity via URL)</li>
-                <li>Documented all bugs with steps to reproduce, expected vs. actual results, and severity classification</li>
-                <li>Produced a test summary report ready for developer handoff</li>
+                <li>Designed test cases for critical user flows</li>
+                <li>Executed manual functional and UI testing</li>
+               <li>Performed negative testing on input fields and validation logic</li>
+                <li>Identified and documented UI inconsistencies and validation issues</li>
+                <li>Analyzed edge cases and boundary conditions</li>
               </ul>
             </div>
 
@@ -1133,11 +1135,12 @@
         id="trigger-02"
       >
         <span class="acc-num">// 02</span>
-        <span class="acc-title">REST API — User Auth &amp; Task Management</span>
+        <span class="acc-title">Urban Grocers (API Testing) &amp; Task Management</span>
         <span class="acc-pills" aria-hidden="true">
-          <span class="pill pill-green">API Testing</span>
-          <span class="pill pill-amber">Auth Validation</span>
-          <span class="pill pill-blue">Security</span>
+          <span class="pill pill-green">Postman</span>
+          <span class="pill pill-amber">API Testing</span>
+          <span class="pill pill-amber">Boundary Value Analysis</span>
+          <span class="pill pill-blue">JSON Validation</span>
         </span>
         <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="9 18 15 12 9 6"></polyline>
@@ -1149,7 +1152,7 @@
         <div class="notion-card">
 
           <div class="notion-page-header">
-            <div class="notion-page-title">REST API — User Auth &amp; Task Management</div>
+            <div class="notion-page-title">Urban Grocers (API Testing) &amp; Task Management</div>
 
             <div class="notion-props">
               <div class="notion-prop">
@@ -1162,18 +1165,16 @@
               </div>
               <div class="notion-prop">
                 <span class="notion-prop-key">Type</span>
-                <span class="notion-prop-val">Simulated — API testing exercise</span>
+                <span class="notion-prop-val">Simulated — API testing -- Bootcamp Project</span>
               </div>
               <div class="notion-prop">
                 <span class="notion-prop-key">Technologies</span>
                 <span class="notion-prop-val">
+                  <span class="pill pill-green">Postman</span>
                   <span class="pill pill-green">API Testing</span>
-                  <span class="pill pill-green">Auth Validation</span>
-                  <span class="pill pill-amber">Postman</span>
-                  <span class="pill pill-amber">JWT.io</span>
+                  <span class="pill pill-green">JSON Validation</span>
                   <span class="pill pill-amber">Jira</span>
-                  <span class="pill pill-blue">REST</span>
-                  <span class="pill pill-blue">JSON</span>
+                  <span class="pill pill-blue">Boundary Value Analysis</span>
                 </span>
               </div>
               <div class="notion-prop">
@@ -1188,11 +1189,11 @@
             <div class="notion-block">
               <div class="notion-block-label">Objective &amp; Scope</div>
               <p>
-                Validate the REST API of a simulated task management application — covering
-                user registration, login/logout, JWT authentication, and full CRUD operations
-                on task resources. Focused on authentication flow integrity, proper HTTP
-                status codes, error handling, and response body structure.
-                Out of scope: performance/load testing, third-party integrations.
+                Validate REST API endpoints for the Urban Grocers platform —
+                focusing on kit management and delivery service behavior.
+                Covers request/response validation, status codes, boundary values,
+                and error handling.
+                Out of scope: frontend UI, database internals.
               </p>
             </div>
 
@@ -1211,11 +1212,11 @@
             <div class="notion-block">
               <div class="notion-block-label">Responsibilities</div>
               <ul class="notion-bullets">
-                <li>Built a Postman collection with 9 test cases covering all auth and CRUD endpoints</li>
-                <li>Detected a critical IDOR vulnerability — unauthorized cross-user task deletion with no ownership check</li>
-                <li>Verified JWT expiry handling and found server-side token validation was entirely absent</li>
-                <li>Documented all bugs with HTTP request/response evidence and OWASP references</li>
-                <li>Flagged inconsistent error response contracts across endpoints</li>
+                <li>Designed and executed API test cases using Postman</li>
+                <li>Validated request/response structure, status codes, and error handling</li>
+                <li>Applied boundary value analysis and equivalence partitioning for input validation</li>
+                <li>Tested business logic scenarios, including delivery constraints and product limits</li>
+                <li>Identified inconsistencies in API behavior and error response handling across endpoints</li>
               </ul>
             </div>
 
