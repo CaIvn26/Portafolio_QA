@@ -962,8 +962,8 @@
               <div class="notion-prop">
                 <span class="notion-prop-key">Project URL</span>
                 <span class="notion-prop-val">
-                  <a href="https://github.com/your/Portafolio_Carlo_Rmz_QA" target="_blank" rel="noopener">
-                    github.com/your/Portafolio_Carlo_Rmz_QA ↗
+                  <a href="https://docs.google.com/spreadsheets/d/1rVfb0P-zFEWZENdYfLrAuzjsNIsMkiCr/edit?usp=sharing&ouid=109621089401052667799&rtpof=true&sd=true" target="_blank" rel="noopener">
+                   https://docs.google.com/spreadsheets/d/1rVfb0P-zFEWZENdYfLrAuzjsNIsMkiCr/edit?usp=sharing&ouid=109621089401052667799&rtpof=true&sd=true ↗
                   </a>
                 </span>
               </div>
@@ -986,7 +986,7 @@
               </div>
               <div class="notion-prop">
                 <span class="notion-prop-key">Test Cases</span>
-                <span class="notion-prop-val">8 cases · 4 bugs found</span>
+                <span class="notion-prop-val">79 cases · 33 bugs found</span>
               </div>
             </div>
           </div>
@@ -1031,52 +1031,22 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>TC-001</td>
-                    <td>Add single in-stock item to cart and complete purchase with valid credit card</td>
+                    <td>TC-0018</td>
+                    <td>El mapa se muestra en el centro de la interfaz.</td>
                     <td>Positive</td>
-                    <td><span class="status-pass">PASS</span></td>
+                    <td><span class="status-pass">APROBADO</span></td>
                   </tr>
                   <tr>
-                    <td>TC-002</td>
-                    <td>Apply valid 20% discount coupon before checkout — verify price calculation</td>
+                    <td>TC-0019</td>
+                    <td>El automóvil más cercano aparece en el mapa con un ícono más grande.</td>
                     <td>Positive</td>
-                    <td><span class="status-pass">PASS</span></td>
+                    <td><span class="status-fail">NO APROBADO</span></td>
                   </tr>
                   <tr>
-                    <td>TC-003</td>
-                    <td>Attempt checkout with expired credit card (MM/YY in the past)</td>
-                    <td>Negative</td>
-                    <td><span class="status-pass">PASS</span></td>
-                  </tr>
-                  <tr>
-                    <td>TC-004</td>
-                    <td>Submit empty required shipping fields — verify inline error messages</td>
-                    <td>Negative</td>
-                    <td><span class="status-fail">FAIL</span></td>
-                  </tr>
-                  <tr>
-                    <td>TC-005</td>
-                    <td>Add quantity 0 or negative value via manual URL parameter manipulation</td>
+                    <td>P-1</td>
+                    <td>"Comprobación de la lógica del botón de reserva al rellenar todos los campos obligatorios del formulario de reserva."</td>
                     <td>Edge Case</td>
-                    <td><span class="status-fail">FAIL</span></td>
-                  </tr>
-                  <tr>
-                    <td>TC-006</td>
-                    <td>Apply two discount coupons simultaneously — verify only one is applied</td>
-                    <td>Edge Case</td>
-                    <td><span class="status-fail">FAIL</span></td>
-                  </tr>
-                  <tr>
-                    <td>TC-007</td>
-                    <td>Complete purchase with minimum cart total (1 item, $0.01)</td>
-                    <td>Boundary</td>
                     <td><span class="status-pass">PASS</span></td>
-                  </tr>
-                  <tr>
-                    <td>TC-008</td>
-                    <td>Attempt purchase of out-of-stock item that went out-of-stock mid-session</td>
-                    <td>Edge Case</td>
-                    <td><span class="status-fail">FAIL</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -1088,32 +1058,24 @@
 
             <!-- Bugs found -->
             <div class="notion-block">
-              <div class="notion-block-label">Bugs Found</div>
+              <div class="notion-block-label">Bugs Found --  representative sample</div>
               <ul class="notion-bullets">
                 <li>
-                  <span class="bug-sev sev-high">HIGH</span>
-                  &nbsp;<strong>Dual coupon stacking:</strong> Applying two promo codes in sequence applies both, resulting in orders with negative totals. No server-side coupon uniqueness check.
-                </li>
-                <li>
-                  <span class="bug-sev sev-high">HIGH</span>
-                  &nbsp;<strong>Negative quantity via URL:</strong> Setting <code style="font-family:var(--mono);font-size:0.8em;color:var(--green);">?qty=-3</code> reduces cart total. No server-side quantity validation.
-                </li>
-                <li>
                   <span class="bug-sev sev-med">MED</span>
-                  &nbsp;<strong>Missing field error messages:</strong> Empty shipping fields — form fails silently with no user feedback.
+                  &nbsp;<strong>Problemas de interfaz:</strong> Elementos del formulario presentan problemas de alineación o superposición
                 </li>
                 <li>
-                  <span class="bug-sev sev-med">MED</span>
-                  &nbsp;<strong>Stale stock state:</strong> Purchase completes for items that went out of stock mid-session. No revalidation at checkout.
+                  <span class="bug-sev sev-high">HIGH</span>
+                  &nbsp;<strong> Falta de filtros en el CCV: </strong> El campo Código de seguridad permite introducir letras o caracteres especiales
                 </li>
               </ul>
             </div>
 
             <!-- Conclusion callout -->
             <div class="notion-callout">
-              Identified <strong>2 high-severity business logic flaws</strong> with direct financial impact.
-              All 4 bugs documented with reproduction steps, expected vs. actual, and severity rationale — ready for dev handoff.
-              Coverage: 8 test cases across positive, negative, edge, and boundary categories.
+              Identified <strong>more than 8 high-priority business logic bugs</strong> that directly impacted the payment workflow, allowing the application to provide services without successfully charging users.
+              All bugs were documented on JIRA with clear reproduction steps, expected vs. actual behavior, and severity justification — ready for developer handoff.
+              Coverage included positive, negative, edge-case, and boundary-value testing across 8 comprehensive test cases.
             </div>
 
           </div><!-- /notion-body -->
@@ -1158,8 +1120,8 @@
               <div class="notion-prop">
                 <span class="notion-prop-key">Project URL</span>
                 <span class="notion-prop-val">
-                  <a href="https://github.com/your-github/qa-api-task-management" target="_blank" rel="noopener">
-                    github.com/your-github/qa-api-task-management ↗
+                  <a href="https://docs.google.com/spreadsheets/d/1rM1GRfyWCBQQOmf2PeJgSfWSsCqB6t5d/edit?usp=sharing&ouid=109621089401052667799&rtpof=true&sd=true" target="_blank" rel="noopener">
+                    https://docs.google.com/spreadsheets/d/1rM1GRfyWCBQQOmf2PeJgSfWSsCqB6t5d/edit?usp=sharing&ouid=109621089401052667799&rtpof=true&sd=true ↗
                   </a>
                 </span>
               </div>
@@ -1179,7 +1141,7 @@
               </div>
               <div class="notion-prop">
                 <span class="notion-prop-key">Test Cases</span>
-                <span class="notion-prop-val">9 cases · 4 bugs found · 1 critical security finding</span>
+                <span class="notion-prop-val"> 68 cases · 23 bugs found · 1 critical security finding</span>
               </div>
             </div>
           </div>
@@ -1234,68 +1196,27 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>API-001</td>
-                    <td>Register new user with valid email and strong password</td>
-                    <td>Positive</td>
-                    <td>201 + token</td>
-                    <td><span class="status-pass">PASS</span></td>
-                  </tr>
-                  <tr>
-                    <td>API-002</td>
-                    <td>Login with valid credentials — verify JWT returned</td>
-                    <td>Positive</td>
-                    <td>200 + JWT</td>
-                    <td><span class="status-pass">PASS</span></td>
-                  </tr>
-                  <tr>
-                    <td>API-003</td>
-                    <td>Access GET /tasks without Authorization header</td>
-                    <td>Negative</td>
-                    <td>401</td>
-                    <td><span class="status-pass">PASS</span></td>
-                  </tr>
-                  <tr>
                     <td>API-004</td>
-                    <td>Access GET /tasks with expired JWT</td>
+                    <td>Verificar que el sistema crashee cuando productsList no es un array</td>
+                    <td>Positive</td>
+                    <td>500 Internal Server Error</td>
+                    <td><span class="status-pass">APROBADO</span></td>
+                  </tr>
+                  <tr>
+                    <td>API-013</td>
+                    <td>Verificar que el ID de un producto no pueda ser 0</td>
                     <td>Negative</td>
-                    <td>401</td>
-                    <td><span class="status-fail">FAIL</span></td>
+                    <td>400 Bad Request</td>
+                    <td><span class="status-fail">NO APROBADO</span></td>
                   </tr>
                   <tr>
-                    <td>API-005</td>
-                    <td>Register with already-registered email address</td>
-                    <td>Negative</td>
-                    <td>409 Conflict</td>
-                    <td><span class="status-fail">FAIL</span></td>
+                    <td>API-064</td>
+                    <td>Verificar productsWeight  = 3.1(flíite inferior 2)</td>
+                    <td>boundary testing</td>
+                    <td>200 Ok+ "hostDeliveryCost": 3</td>
+                    <td><span class="status-fail">NO APROBADO</span></td>
                   </tr>
-                  <tr>
-                    <td>API-006</td>
-                    <td>Create task with empty "title" field (required)</td>
-                    <td>Negative</td>
-                    <td>400 + error msg</td>
-                    <td><span class="status-pass">PASS</span></td>
-                  </tr>
-                  <tr>
-                    <td>API-007</td>
-                    <td>Delete task belonging to a different authenticated user (IDOR check)</td>
-                    <td>Security</td>
-                    <td>403 Forbidden</td>
-                    <td><span class="status-fail">FAIL</span></td>
-                  </tr>
-                  <tr>
-                    <td>API-008</td>
-                    <td>Send malformed JSON body to POST /tasks</td>
-                    <td>Edge Case</td>
-                    <td>400</td>
-                    <td><span class="status-pass">PASS</span></td>
-                  </tr>
-                  <tr>
-                    <td>API-009</td>
-                    <td>GET /tasks/:id with non-existent task ID</td>
-                    <td>Negative</td>
-                    <td>404</td>
-                    <td><span class="status-pass">PASS</span></td>
-                  </tr>
+             
                 </tbody>
               </table>
               <div class="visual-note">
@@ -1305,30 +1226,28 @@
             </div>
 
             <div class="notion-block">
-              <div class="notion-block-label">Bugs Found</div>
+              <div class="notion-block-label">Bugs Found -- representative sample</div>
               <ul class="notion-bullets">
                 <li>
                   <span class="bug-sev sev-high">CRITICAL</span>
-                  &nbsp;<strong>IDOR — Broken Object Level Authorization:</strong> User B can delete User A's tasks by knowing the task ID. Returns 200 instead of 403. No ownership validation on DELETE /tasks/:id.
+                  &nbsp;<strong>Precio por denajo de lo esperado:</strong> El API indica precio incorrecto 
                 </li>
                 <li>
                   <span class="bug-sev sev-high">HIGH</span>
-                  &nbsp;<strong>Expired JWT accepted:</strong> Manually expired tokens (past <code style="font-family:var(--mono);font-size:0.8em;color:var(--green);">exp</code>) return 200. JWT expiry not validated server-side.
+                  &nbsp;<strong>ID del producto mal manejados:</strong> El API permite IDs de producto negativos
                 </li>
                 <li>
                   <span class="bug-sev sev-med">MED</span>
-                  &nbsp;<strong>Duplicate registration returns 200:</strong> Re-registering an existing email creates a second user silently instead of returning 409 Conflict.
-                </li>
-                <li>
-                  <span class="bug-sev sev-low">LOW</span>
-                  &nbsp;<strong>Inconsistent error shape:</strong> Some endpoints return <code style="font-family:var(--mono);font-size:0.8em;color:var(--green);">{error}</code>, others <code style="font-family:var(--mono);font-size:0.8em;color:var(--green);">{message}</code>. No unified error contract.
+                  &nbsp;<strong>API devuele 500 en vez de 404:</strong> El API devuelve 500 Internal Server Error para ID de kit decimal en la URL
                 </li>
               </ul>
             </div>
 
             <div class="notion-callout">
-              Caught a <strong>critical IDOR vulnerability</strong> and a complete JWT expiry bypass — both security findings, not just functional bugs.
-              All bugs documented with HTTP evidence, reproduction steps, and OWASP references where applicable.
+              Identified <strong>more than 8 high-priority business logic and API validation bugs</strong> that directly impacted the final delivery pricing, allowing the application to process services without charging the correct amount.
+              Also uncovered critical workflow flaws where deliveries could still be completed even when fulfillment was impossible due to unavailable products or out-of-service delivery schedules.
+              All bugs were documented on JIRA with detailed reproduction steps, expected vs. actual behavior, and severity rationale — ready for developer handoff.
+              Coverage included 50+ test cases across positive, negative, edge-case, and boundary-value scenarios.
             </div>
 
           </div><!-- /notion-body -->
