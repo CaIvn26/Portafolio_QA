@@ -1050,10 +1050,6 @@
                   </tr>
                 </tbody>
               </table>
-              <div class="visual-note">
-                <span class="visual-note-icon">// visual</span>
-                <span>Replace this block with a screenshot of TC-004 (missing error state) and a GIF of TC-006 (double-coupon bug).</span>
-              </div>
             </div>
 
             <!-- Bugs found -->
@@ -1219,10 +1215,6 @@
              
                 </tbody>
               </table>
-              <div class="visual-note">
-                <span class="visual-note-icon">// visual</span>
-                <span>Replace with Postman screenshot of API-007 response (200 instead of 403). Include the full JSON body and link to exported Postman collection.</span>
-              </div>
             </div>
 
             <div class="notion-block">
@@ -1255,6 +1247,146 @@
       </div><!-- /accordion-panel -->
     </div>
     <!-- /PROJECT 02 -->
+
+
+   
+    <!-- ══════════════════════════
+         PROJECT 03
+    ══════════════════════════ -->
+    <div class="accordion-item" id="proj-02">
+
+      <button
+        class="accordion-trigger"
+        aria-expanded="false"
+        aria-controls="panel-03"
+        id="trigger-03"
+      >
+        <span class="acc-num">// 03</span>
+        <span class="acc-title">Urban.Lunch (Mobile Application)  &amp; Mobile Testing</span>
+        <span class="acc-pills" aria-hidden="true">
+          <span class="pill pill-green">Android Studio Emulator</span>
+          <span class="pill pill-amber">Android</span>
+          <span class="pill pill-amber">Smoke Testing</span>
+          <span class="pill pill-blue">Mobile Testing</span>
+        </span>
+        <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="accordion-panel" id="panel-03" role="region" aria-labelledby="trigger-03">
+
+        <div class="notion-card">
+
+          <div class="notion-page-header">
+            <div class="notion-page-title">Urban Grocers (API Testing) &amp; Task Management</div>
+
+            <div class="notion-props">
+              <div class="notion-prop">
+                <span class="notion-prop-key">Project URL</span>
+                <span class="notion-prop-val">
+                  <a href="https://docs.google.com/spreadsheets/d/1rM1GRfyWCBQQOmf2PeJgSfWSsCqB6t5d/edit?usp=sharing&ouid=109621089401052667799&rtpof=true&sd=true" target="_blank" rel="noopener">
+                    https://docs.google.com/spreadsheets/d/1rM1GRfyWCBQQOmf2PeJgSfWSsCqB6t5d/edit?usp=sharing&ouid=109621089401052667799&rtpof=true&sd=true ↗
+                  </a>
+                </span>
+              </div>
+              <div class="notion-prop">
+                <span class="notion-prop-key">Type</span>
+                <span class="acc-title">Urban.Lunch (Mobile Application)  &amp; Mobile Testing</span>
+              </div>
+              <div class="notion-prop">
+                <span class="notion-prop-key">Technologies</span>
+                <span class="notion-prop-val">
+                  <span class="pill pill-green">Android Studio Emulator</span>
+                  <span class="pill pill-green">Android</span>
+                  <span class="pill pill-green">Smoke Testing</span>
+                  <span class="pill pill-amber">Jira</span>
+                  <span class="pill pill-blue">Mobile Testing</span>
+                </span>
+              </div>
+              <div class="notion-prop">
+                <span class="notion-prop-key">Test Cases</span>
+                <span class="notion-prop-val"> 55 cases · 2 bugs found </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="notion-body">
+
+            <div class="notion-block">
+              <div class="notion-block-label">Objective &amp; Scope</div>
+              <p>
+                Perform end-to-end manual testing of the Urban.Lunch mobile application by
+                validating functional requirements, user interface behavior, navigation
+                flow, and order lifecycle. Designed and executed test cases, documented test
+                results, and reported functional and UI defects in Jira. Out of scope:
+                backend implementation, API validation, and database testing..
+              </p>
+            </div>
+
+            <div class="notion-block">
+              <div class="notion-block-label">Responsibilities</div>
+              <ul class="notion-bullets">
+                <li>Analyzed functional requirements and translated them into structured test cases and checklists.</li>
+                <li>Executed manual functional testing on an Android application using Android Studio Emulator.</li>
+                <li>Validated end-to-end user flows, including pickup point selection, dish selection, order confirmation, tracking, and order completion.</li>
+                <li>Verified UI behavior, navigation, progress indicators, and functional validations against documented requirements.</li>
+                <li>Identified, documented, and reported functional and UI defects in Jira with reproducible steps and expected vs. actual results.</li>
+              </ul>
+            </div>
+
+            <div class="notion-block">
+              <div class="notion-block-label">Test Cases — representative sample</div>
+              <table class="notion-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Expected</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>TC-42</td>
+                    <td>El botón "Recibí el pedido" está habilitado al abrir la pantalla "El pedido ha sido enviado".</td>
+                    <td>Positive</td>
+                    <td>Botón habilitado en la pantalla final, con el mensaje "El pedido ha sido enviado"</td>
+                    <td><span class="status-fail">APROBADO</span></td>
+                  </tr>
+                  <tr>
+                    <td>TC-43</td>
+                    <td>Al finalizar el feedback, la aplicación regresa a la pantalla de selección del punto de recogida.</td>
+                    <td>Positive</td>
+                    <td>Después de calificar el pedido, la aplicación retorna a la pantalla de inicio de modo que esté preparada para el sigueinte pedido</td>
+                    <td><span class="status-fail">NO APROBADO</span></td>
+                  </tr>             
+                </tbody>
+
+            <div class="notion-block">
+              <div class="notion-block-label">Bugs Found -- representative sample</div>
+              <ul class="notion-bullets">
+                <li>
+                  <span class="bug-sev sev-med">MED</span>
+                  &nbsp;<strong>Texto solapado:</strong> Los textos en la pantalla de detalles del producto se solapan.
+                </li>
+              </ul>
+            </div>
+
+            <div class="notion-callout">
+              Identified Executed <strong>50+ manual functional test cases</strong> covering the complete mobile
+              ordering workflow and identified reproducible functional and UI defects.
+              Performed requirements-based validation, end-to-end workflow testing, UI 
+              verification, and error handling checks, documenting all findings in Jira
+              with detailed reproduction steps, expected vs. actual behavior, and execution results.
+            </div>
+
+          </div><!-- /notion-body -->
+        </div><!-- /notion-card -->
+      </div><!-- /accordion-panel -->
+    </div>
+    <!-- /PROJECT 03 -->
 
   </div><!-- /accordion-list -->
 </section>
